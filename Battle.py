@@ -6,7 +6,11 @@ pokemonDB = mongoClient['pokemondb']
 pokemonColl = pokemonDB['pokemon_data']
 
 def fetch(pokemonid):
-    return pokemonColl.find_one({"pokedex_number":pokemonid})
+    result = pokemonColl.find_one({"pokedex_number":pokemonid})
+    if result is None:
+        raise ValueError(f"No Pokemon found with ID {pokemonid}")
+    return result
+
 
 def battle(pokemon1, pokemon2):
     print("Let the Pokemon battle begin! ================")
