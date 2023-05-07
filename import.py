@@ -22,18 +22,20 @@ sqlite_cur.execute(sqlite_query)
 for row in sqlite_cur.fetchall():
     pokemon = {
         "name": row[0],
-        "pokedex_number": row[1],
+        "pokedex_number": int(row[1]),
         "types": [row[2], row[3]], # type1 and type2
-        "hp": row[4],
-        "attack": row[5],
-        "defense": row[6],
-        "speed": row[7],
-        "sp_attack": row[8],
-        "sp_defense": row[9],
+        "hp": int(row[4]),
+        "attack": int(row[5]),
+        "defense": int(row[6]),
+        "speed": int(row[7]),
+        "sp_attack": int(row[8]),
+        "sp_defense": int(row[9]),
         "abilities": [row[10]] 
     }
     pokemonColl.insert_one(pokemon)
 
+for pokemon in pokemonColl.find():
+    print(pokemon)
 # Close the connections
 sqlite_cur.close()
 sqlite_conn.close()

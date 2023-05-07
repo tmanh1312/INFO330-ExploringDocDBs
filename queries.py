@@ -14,11 +14,10 @@ for p in pikachus:
 # Return all the Pokemon with an attack greater than 150
 powerful_pokemons = pokemonColl.find({"attack": {"$gt": 150}})
 for pokemon in powerful_pokemons:
-    print(pokemon)
+    print(pokemon) 
 
 # Return all the Pokemon with an ability of "Overgrow"
-overgrow_pokemons = pokemonColl.find({"abilities": {"$in": ["Overgrow"]}})
+overgrow_pokemons = pokemonColl.find({"abilities": {"$regex": "overgrow", "$options": "i"}})
 for o in overgrow_pokemons:
     print(o)
-
 

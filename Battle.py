@@ -5,10 +5,10 @@ mongoClient = MongoClient("mongodb://localhost/pokemon")
 pokemonDB = mongoClient['pokemondb']
 pokemonColl = pokemonDB['pokemon_data']
 
-def fetch(pokemonid):
-    result = pokemonColl.find_one({"pokedex_number":pokemonid})
+def fetch(pokedex_number):
+    result = pokemonColl.find_one({"pokedex_number": pokedex_number})
     if result is None:
-        raise ValueError(f"No Pokemon found with ID {pokemonid}")
+        raise ValueError(f"No Pokemon found with ID {pokedex_number}")
     return result
 
 
